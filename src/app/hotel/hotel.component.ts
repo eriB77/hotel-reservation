@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import hotels from '../db.json'
+import hotels from '../db.json';
 
 
 interface Category{
@@ -15,7 +15,7 @@ interface Category{
   viewValue: string;
 }
 
-interface hotels{
+ interface hotels{
   id: number;
   name: string;
   city: string;
@@ -28,24 +28,9 @@ interface hotels{
   styleUrls: ['./hotel.component.scss']
 })
 export class HotelComponent implements OnInit {
-  hotels: hotels[] = ;
-
-  newHotelForm = new FormGroup({
-    name : new FormControl(this.hotels.name, [
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(30),
-    ]),
-    city : new FormControl(this.hotels.city,[
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(30),
-    ]),
-
-    // newHotelCategory : new FormControl(''),
-  });
   
-
+  title= 'db';
+  public hotelsList:{id: number, name: string, city: string, category: string}[]= hotels;
 
   categories: Category[] =[
     {value: 'hotel', viewValue: 'Hotel'},
@@ -53,15 +38,28 @@ export class HotelComponent implements OnInit {
     {value: 'guesthouse', viewValue: 'GuestHouse'},
   ];
   hotels: any;
+  hotelsForm: FormGroup<{ name: FormControl<any>; city: FormControl<any>; }> | undefined;
 
   onSubmit() {
-    console.warn(this.newHotelForm.value);
+    console.log();
   }
  
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.hotelsForm = new FormGroup({
+      name : new FormControl(this.hotels.name, [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(30),
+      ]),
+      city : new FormControl(this.hotels.city,[
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(30),
+      ])
+    });
+
   }
 
-
-}
+};
