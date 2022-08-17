@@ -12,10 +12,8 @@ import {MaterialExampleModule} from '../material.modul';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ReadJsonFileUsingHttpclientComponent } from './read-json-file-using-httpclient/read-json-file-using-httpclient.component';
-import { ReadJsonUsingTypescriptImportComponent } from './read-json-using-typescript-import/read-json-using-typescript-import.component';
-import { HttpClientModule } from '@angular/common/http';
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,8 +22,6 @@ import { HttpClientModule } from '@angular/common/http';
     RestaurantComponent,
     PageNotFoundComponent,
     DashboardComponent,
-    ReadJsonFileUsingHttpclientComponent,
-    ReadJsonUsingTypescriptImportComponent,
   ],
   imports: [
     BrowserModule,
