@@ -1,0 +1,31 @@
+<form [formGroup]="newHotelForm" class="form-hotel" (ngSubmit)="onSubmit()">
+    <div class="form-hotel-name">
+        <mat-form-field class="name" appearance="outline">
+            <mat-label>Name:</mat-label>
+            <input type="text" formControlName="name" required minlength="5" maxlength="30" matInput class="mat-input-name">
+            <!-- <p>Value: {{newHotelName.value}}</p> -->
+        </mat-form-field>
+    </div>
+    <div class="form-hotel-city">
+        <mat-form-field class="city" appearance="outline">
+            <mat-label>City</mat-label>
+            <input type="text" formControlName="city" required minlength="3" matInput class="mat-input-city">
+        </mat-form-field>
+    </div>
+    <div class="form-hotel-category">
+        <mat-form-field appearance="fill">
+            <mat-label>Category:</mat-label>
+            <mat-select class="mat-select-category">
+                <mat-option  *ngFor="let category of categories" [value]="category.value" aria-required="true">
+                    {{category.viewValue}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <div>
+        <button type="submit" mat-raised-button color="primary" class="submit" [disabled]="!newHotelForm.valid">
+            Save
+        </button>
+       
+    </div>
+</form>
