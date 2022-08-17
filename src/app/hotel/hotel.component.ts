@@ -44,7 +44,7 @@ export class HotelComponent implements OnInit {
     console.log();
   };
   saveHotel(): void{
-    this.hotelsForm?.setValue();
+    this.hotelsForm.setValue();
   };
 
  
@@ -62,6 +62,7 @@ export class HotelComponent implements OnInit {
         Validators.minLength(5),
         Validators.maxLength(30),
       ])
+      category: new FormControl(this.hotels.category, Validators.required)
     });
 
   }
