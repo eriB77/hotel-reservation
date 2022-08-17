@@ -16,7 +16,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Category:</mat-label>
             <mat-select class="mat-select-category">
-                <mat-option  *ngFor="let category of categories" [value]="category.value" aria-required="true">
+                <mat-option  *ngFor="let category of categories" [value]="category.value" aria-required="true" (click)="saveHotel()" >
                     {{category.viewValue}}
                 </mat-option>
             </mat-select>

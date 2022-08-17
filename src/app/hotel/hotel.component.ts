@@ -42,7 +42,11 @@ export class HotelComponent implements OnInit {
 
   onSubmit() {
     console.log();
-  }
+  };
+  saveHotel(): void{
+    this.hotelsForm?.setValue();
+  };
+
  
   constructor(private fb: FormBuilder) { }
 
