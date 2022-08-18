@@ -1,15 +1,17 @@
 <form [formGroup]="hotelsForm" class="form-contoll" (ngSubmit)="onSubmit()">
     <div class="form-hotel-name">
-        <mat-form-field class="name" appearance="outline">
+        <mat-form-field id="name" appearance="outline">
             <mat-label>Name:</mat-label>
-            <input type="text" formControlName="name" required minlength="5" maxlength="30" matInput class="mat-input-name">
+            <input type="text" formControlName="name" matInput class="mat-input-name">
+            <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
             <!-- <p>Value: {{newHotelName.value}}</p> -->
         </mat-form-field>
     </div>
     <div class="form-hotel-city">
         <mat-form-field class="form-contoll" appearance="outline">
             <mat-label>City</mat-label>
-            <input type="text" formControlName="city" required minlength="3" matInput class="mat-input-city">
+            <input type="text" formControlName="city" matInput class="mat-input-city">
+            <mat-error *ngIf="city.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
     <div class="form-hotel-category">
@@ -20,12 +22,13 @@
                     {{category.viewValue}}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="category.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
     </div>
     <div>
-        <button type="submit" mat-raised-button color="primary" class="submit" [disabled]="!hotelsForm.valid">
+        <button type="submit" mat-raised-button class="submit" [disabled]="!hotelsForm.valid">
             Save
         </button>
-       
+
     </div>
 </form>

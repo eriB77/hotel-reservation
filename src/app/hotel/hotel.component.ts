@@ -28,9 +28,12 @@ interface Category{
   styleUrls: ['./hotel.component.scss']
 })
 export class HotelComponent implements OnInit {
-  
-  title= 'db';
-  public hotelsList:{id: number, name: string, city: string, category: string}[]= hotels;
+ 
+  public hotelsList:{
+    id: number, 
+    name: string, 
+    city: string, 
+    category: string}[]= hotels;
 
   categories: Category[] =[
     {value: 'hotel', viewValue: 'Hotel'},
@@ -39,7 +42,12 @@ export class HotelComponent implements OnInit {
   ];
   hotels: any;
   hotelsForm!: FormGroup;
+  name!: string;
+  city!: string;
+  category: any;
+  
 
+  
   onSubmit() {
     console.log();
   };
@@ -47,6 +55,18 @@ export class HotelComponent implements OnInit {
     //this.hotelsForm.setValue();
   };
 
+ getErrorMessage(){
+    if (this.name.hasError('required')){
+      return 'You must to fill it more than 5 character'
+    };
+    if (this.city.hasError('required')){
+      return 'You must to fill it more than 5 character'
+    };
+    if (this.category.hasError('required')){
+      return 'You must to choose'
+    };
+
+  };
  
   constructor(private fb: FormBuilder) { }
 
