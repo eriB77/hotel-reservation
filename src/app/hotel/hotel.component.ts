@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import hotels from '../db.json';
+import hotels from 'src/db.json';
 
 
 interface Category{
@@ -38,13 +38,13 @@ export class HotelComponent implements OnInit {
     {value: 'guesthouse', viewValue: 'GuestHouse'},
   ];
   hotels: any;
-  hotelsForm: FormGroup<{ name: FormControl<any>; city: FormControl<any>; }> | undefined;
+  hotelsForm!: FormGroup;
 
   onSubmit() {
     console.log();
   };
   saveHotel(): void{
-    this.hotelsForm.setValue();
+    //this.hotelsForm.setValue();
   };
 
  
@@ -61,8 +61,8 @@ export class HotelComponent implements OnInit {
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(30),
-      ])
-      category: new FormControl(this.hotels.category, Validators.required)
+      ]),
+      category: new FormControl('', Validators.required)
     });
 
   }
