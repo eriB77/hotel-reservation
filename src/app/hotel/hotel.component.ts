@@ -40,11 +40,16 @@ export class HotelComponent implements OnInit {
     {value: 'apartman', viewValue: 'Apartman'},
     {value: 'guesthouse', viewValue: 'GuestHouse'},
   ];
+
   hotels: any;
-  hotelsForm!: FormGroup;
-  name!: string;
-  city!: string;
-  category: any;
+  
+  public hotelsForm!: FormGroup;
+  public name!: FormControl;
+  public city!: FormControl;
+  public category!: FormControl;
+  // name!: string;
+  // city!: string;
+  // category: any;
   
 
   
@@ -55,35 +60,27 @@ export class HotelComponent implements OnInit {
     //this.hotelsForm.setValue();
   };
 
- getErrorMessage(){
-    if (this.name.hasError('required')){
-      return 'You must to fill it more than 5 character'
-    };
-    if (this.city.hasError('required')){
-      return 'You must to fill it more than 5 character'
-    };
-    if (this.category.hasError('required')){
-      return 'You must to choose'
-    };
-
-  };
  
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
+ 
+  constructor(private fb: FormBuilder) { 
     this.hotelsForm = new FormGroup({
-      name : new FormControl(this.hotels.name, [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(30),
-      ]),
-      city : new FormControl(this.hotels.city,[
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(30),
-      ]),
-      category: new FormControl('', Validators.required)
-    });
+      name : new FormControl('', [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(30),
+        ]),
+        city : new FormControl('',[
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(30),
+        ]),
+        category: new FormControl('', Validators.required)  });
+  }
+
+  
+  ngOnInit(): void {
+    
+  
 
   }
 

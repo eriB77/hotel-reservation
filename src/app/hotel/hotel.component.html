@@ -3,7 +3,7 @@
         <mat-form-field id="name" appearance="outline">
             <mat-label>Name:</mat-label>
             <input type="text" formControlName="name" matInput class="mat-input-name">
-            <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error> -->
             <!-- <p>Value: {{newHotelName.value}}</p> -->
         </mat-form-field>
     </div>
@@ -11,21 +11,21 @@
         <mat-form-field class="form-contoll" appearance="outline">
             <mat-label>City</mat-label>
             <input type="text" formControlName="city" matInput class="mat-input-city">
-            <mat-error *ngIf="city.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <mat-error *ngIf="city.invalid">{{getErrorMessage()}}</mat-error> -->
         </mat-form-field>
     </div>
     <div class="form-hotel-category">
         <mat-form-field appearance="fill">
             <mat-label>Category:</mat-label>
-            <mat-select class="mat-select-category">
-                <mat-option  formControlName="category" *ngFor="let category of categories" [value]="category.value" aria-required="true" (click)="saveHotel()" >
+            <mat-select class="mat-select-category"  formControlName="category">
+                <mat-option  *ngFor="let category of categories" [value]="category.value" aria-required="true" (click)="saveHotel()" >
                     {{category.viewValue}}
                 </mat-option>
             </mat-select>
-            <mat-error *ngIf="category.invalid">{{getErrorMessage()}}</mat-error>
+            <!-- <mat-error *ngIf="category.invalid">{{getErrorMessage()}}</mat-error> -->
           </mat-form-field>
     </div>
-    <div>
+    <div class="form-submit-button">
         <button type="submit" mat-raised-button class="submit" [disabled]="!hotelsForm.valid">
             Save
         </button>
