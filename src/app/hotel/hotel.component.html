@@ -3,7 +3,7 @@
         <mat-form-field id="name" appearance="outline">
             <mat-label>Name:</mat-label>
             <input type="text" formControlName="name" matInput class="mat-input-name">
-            <!-- <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error> -->
+            <mat-error *ngIf="hotelsForm.get('name')?.invalid" [ngClass]="'error'">{{getErrorMessage()}}</mat-error>
             <!-- <p>Value: {{newHotelName.value}}</p> -->
         </mat-form-field>
     </div>
@@ -29,6 +29,6 @@
         <button type="submit" mat-raised-button class="submit" [disabled]="!hotelsForm.valid">
             Save
         </button>
-
+        <mat-hint id="form-submit-hint">Fill all field to save!</mat-hint>
     </div>
 </form>

@@ -5,7 +5,7 @@ import {
   FormArray,
   FormBuilder,
 } from '@angular/forms';
-import { Validators } from '@angular/forms';
+import { AbstractControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import hotels from 'src/db.json';
 
@@ -43,10 +43,10 @@ export class HotelComponent implements OnInit {
 
   hotels: any;
   
-  public hotelsForm!: FormGroup;
-  public name!: FormControl;
-  public city!: FormControl;
-  public category!: FormControl;
+ public hotelsForm!: FormGroup;
+  // public name!: FormControl;
+  // public city!: FormControl;
+  // public category!: FormControl;
   // name!: string;
   // city!: string;
   // category: any;
@@ -59,10 +59,17 @@ export class HotelComponent implements OnInit {
   saveHotel(): void{
     //this.hotelsForm.setValue();
   };
+  getErrorMessage(){
+    // if (this.name.hasError('required')){
+    //   return 'You must enter the new accomodation name';
+    // }
+    // return this.name.hasError('name') ? 'Not vaild name' : '';
+  };
 
  
  
   constructor(private fb: FormBuilder) { 
+    
     this.hotelsForm = new FormGroup({
       name : new FormControl('', [
           Validators.required,
@@ -78,10 +85,11 @@ export class HotelComponent implements OnInit {
   }
 
   
+  
   ngOnInit(): void {
     
   
-
+    
   }
 
 };
