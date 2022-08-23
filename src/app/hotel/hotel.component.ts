@@ -54,7 +54,7 @@ export class HotelComponent implements OnInit {
   // city!: string;
   // category: any;
 
-  namePattern = "^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=[^0-9]*[0-9]).{4,30}$";
+  namePattern = "^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z]).{4,30}$";
   cityPattern = "^[[a-zA-Z ]{4,30}$";
 
   onSubmit() {
@@ -101,6 +101,10 @@ export class HotelComponent implements OnInit {
             Validators.pattern(this.cityPattern),
           ]
         ],
+        category: [
+          '',
+          Validators.required,
+        ]
       }
     );
   }

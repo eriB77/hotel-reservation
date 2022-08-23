@@ -13,18 +13,18 @@
         <mat-form-field class="form-contoll" appearance="outline">
             <mat-label>City</mat-label>
             <input type="text" formControlName="city" [pattern]="cityPattern" matInput class="mat-input-city">
-            <!-- <mat-error *ngIf="city.invalid">{{getErrorMessage()}}</mat-error> -->
+            <mat-error *ngIf="hotelsForm.get('city')?.invalid" [ngClass]="'error'">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
     <div class="form-hotel-category">
         <mat-form-field appearance="fill">
             <mat-label>Category:</mat-label>
-            <mat-select class="mat-select-category"  formControlName="category">
-                <mat-option  *ngFor="let category of categories" [value]="category.value" aria-required="true" (click)="saveHotel()" >
+            <mat-select class="mat-select-category" required formControlName="category">
+                <mat-option  *ngFor="let category of categories" [value]="category.value" (click)="saveHotel()" >
                     {{category.viewValue}}
                 </mat-option>
             </mat-select>
-            <!-- <mat-error *ngIf="category.invalid">{{getErrorMessage()}}</mat-error> -->
+            <mat-error *ngIf="hotelsForm.get('category')?.invalid" [ngClass]="'error'">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
     </div>
     <div class="form-submit-button">
