@@ -47,13 +47,9 @@ export class HotelComponent implements OnInit {
   hotels: any;
 
   public hotelsForm!: FormGroup;
-  // public name!: FormControl;
-  // public city!: FormControl;
-  // public category!: FormControl;
-  // name!: string;
-  // city!: string;
-  // category: any;
-
+  public name!: FormControl;
+  public city!: FormControl;
+  public category!: FormControl;
   namePattern = "^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z]).{4,30}$";
   cityPattern = "^[[a-zA-Z ]{4,30}$";
 
@@ -63,15 +59,7 @@ export class HotelComponent implements OnInit {
   saveHotel(): void {
     //this.hotelsForm.setValue();
   };
-  getErrorMessage() {
-    // if (this.name.hasError('required')){
-    //   return 'You must enter the new accomodation name';
-    // }
-    // return this.name.hasError('name') ? 'Not vaild name' : '';
-  };
-
-
-
+  
   constructor(private fb: FormBuilder) { }
 
 

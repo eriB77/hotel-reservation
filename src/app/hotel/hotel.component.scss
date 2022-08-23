@@ -7,10 +7,6 @@
     align-items: center;
 }   
 
-.button submit{
-    color: #5d59db;
-}
-
 :host {
     display: flex;
     flex-direction: column;
@@ -27,4 +23,13 @@
 
 #form-submit-hint{
   color: red;
+  padding-left: 20px;
+  font-weight: 500;
+}
+
+button{
+  background-color: #5d59db;
+  color: white;
+  margin: 20px;
+  padding-left: 20px;
 }
