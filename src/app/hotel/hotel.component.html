@@ -1,8 +1,10 @@
-<form [formGroup]="hotelsForm" class="form-contoll" (ngSubmit)="onSubmit()">
+<mat-sidenav-container>
+    <mat-sidenav-content>
+<form [formGroup]="hotelsForm" class="form-contoll example-full-width" (ngSubmit)="onSubmit()">
     <div class="form-hotel-name">
         <mat-form-field id="name" appearance="outline">
             <mat-label>Name:</mat-label>
-            <input type="text" formControlName="name" matInput class="mat-input-name">
+            <input type="text" formControlName="name" [pattern]="namePattern" matInput class="mat-input-name">
             <mat-error *ngIf="hotelsForm.get('name')?.invalid" [ngClass]="'error'">{{getErrorMessage()}}</mat-error>
             <!-- <p>Value: {{newHotelName.value}}</p> -->
         </mat-form-field>
@@ -10,7 +12,7 @@
     <div class="form-hotel-city">
         <mat-form-field class="form-contoll" appearance="outline">
             <mat-label>City</mat-label>
-            <input type="text" formControlName="city" matInput class="mat-input-city">
+            <input type="text" formControlName="city" [pattern]="cityPattern" matInput class="mat-input-city">
             <!-- <mat-error *ngIf="city.invalid">{{getErrorMessage()}}</mat-error> -->
         </mat-form-field>
     </div>
@@ -32,3 +34,5 @@
         <mat-hint id="form-submit-hint">Fill all field to save!</mat-hint>
     </div>
 </form>
+</mat-sidenav-content>
+</mat-sidenav-container>
