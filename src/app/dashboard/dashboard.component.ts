@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {AfterViewInit, ViewChild} from '@angular/core';
+import { Component, OnDestroy, OnInit,AfterViewInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -9,11 +8,24 @@ import {MatTableDataSource} from '@angular/material/table';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
+  displayedColumns: string[] = ['name', 'city', 'category'];
+  dataSource!: MatTableDataSource<any>;
+  @ViewChild('paginator') paginator! : MatPaginator; 
+  @ViewChild(MatSort) matSort! : MatSort;
 
-  constructor() { }
+  subscription: Subscription = new Subscription;
 
-  ngOnInit(): void {
+  constructor(private hotelService: hotelService) { }
+
+  
+  async ngOnInit() {
+    this.hotelService.getHotelList().subscribe((response:any) => {
+      this.dataSource = new MatTableDataSource(response);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.matSort;
+    })
+
   }
 
   

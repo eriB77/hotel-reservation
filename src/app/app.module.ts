@@ -9,9 +9,9 @@ import { MatSliderModule } from '@angular/material/slider';
 import { HotelComponent } from './hotel/hotel.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/material.modul';
+import { AfterViewInit } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -21,7 +21,6 @@ import { HttpClientModule } from '@angular/common/http';
     HotelComponent,
     RestaurantComponent,
     PageNotFoundComponent,
-    DashboardComponent,
   ],
   imports: [
     BrowserModule,
