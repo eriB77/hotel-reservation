@@ -1,34 +1,42 @@
-<form [formGroup]="hotelsForm" class="form-contoll" (ngSubmit)="onSubmit()">
-    <div class="form-hotel-name">
-        <mat-form-field id="name" appearance="outline">
-            <mat-label>Name:</mat-label>
-            <input type="text" formControlName="name" matInput class="mat-input-name">
-            <!-- <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error> -->
-            <!-- <p>Value: {{newHotelName.value}}</p> -->
-        </mat-form-field>
-    </div>
-    <div class="form-hotel-city">
-        <mat-form-field class="form-contoll" appearance="outline">
-            <mat-label>City</mat-label>
-            <input type="text" formControlName="city" matInput class="mat-input-city">
-            <!-- <mat-error *ngIf="city.invalid">{{getErrorMessage()}}</mat-error> -->
-        </mat-form-field>
-    </div>
-    <div class="form-hotel-category">
-        <mat-form-field appearance="fill">
-            <mat-label>Category:</mat-label>
-            <mat-select class="mat-select-category"  formControlName="category">
-                <mat-option  *ngFor="let category of categories" [value]="category.value" aria-required="true" (click)="saveHotel()" >
-                    {{category.viewValue}}
-                </mat-option>
-            </mat-select>
-            <!-- <mat-error *ngIf="category.invalid">{{getErrorMessage()}}</mat-error> -->
-          </mat-form-field>
-    </div>
-    <div class="form-submit-button">
-        <button type="submit" mat-raised-button class="submit" [disabled]="!hotelsForm.valid">
-            Save
-        </button>
+<mat-sidenav-container>
+    <mat-sidenav-content>
+        <form [formGroup]="hotelsForm" class="form-contoll example-full-width">
+            <div class="form-hotel-name">
+                <mat-form-field id="name" appearance="outline">
+                    <mat-label>Name:</mat-label>
+                    <input type="text" formControlName="name" [pattern]="namePattern" matInput class="mat-input-name">
+                    <mat-error *ngIf="hotelsForm.get('name')?.invalid" [ngClass]="'error'">Need to be field. The first
+                        letter need to be capital, min.5 character</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-hotel-city">
+                <mat-form-field class="form-contoll" appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input type="text" formControlName="city" [pattern]="cityPattern" matInput class="mat-input-city">
+                    <mat-error *ngIf="hotelsForm.get('city')?.invalid" [ngClass]="'error'">Need to be field. You can use
+                        just letters</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-hotel-category">
+                <mat-form-field appearance="fill">
+                    <mat-label>Category:</mat-label>
+                    <mat-select class="mat-select-category" required formControlName="category">
+                        <mat-option *ngFor="let category of categories" [value]="category.value">
+                            {{category.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="hotelsForm.get('category')?.invalid" [ngClass]="'error'">You must to choose
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-submit-button">
+                <button type="submit" mat-raised-button class="submit" [disabled]="!hotelsForm.valid"
+                    (click)="saveHotel()">
+                    Save
+                </button>
 
-    </div>
-</form>
+            </div>
+            <mat-hint id="form-submit-hint">Fill all field to save!</mat-hint>
+        </form>
+    </mat-sidenav-content>
+</mat-sidenav-container>
