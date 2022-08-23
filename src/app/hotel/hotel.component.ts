@@ -53,11 +53,8 @@ export class HotelComponent implements OnInit {
   namePattern = "^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z]).{4,30}$";
   cityPattern = "^[[a-zA-Z ]{4,30}$";
 
-  onSubmit() {
-    console.log(this.hotelsForm.value);
-  };
   saveHotel(): void {
-    //this.hotelsForm.setValue();
+    console.log(this.hotelsForm.value);
   };
   
   constructor(private fb: FormBuilder) { }
