@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { AbstractControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import hotels from 'src/db.json';
+import HotelsJson from 'src/app/db.json';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 
@@ -31,12 +31,12 @@ interface hotels {
 })
 export class HotelComponent implements OnInit {
 
-  public hotelsList: {
-    id: number,
-    name: string,
-    city: string,
-    category: string
-  }[] = hotels;
+  // public hotelsList: {
+  //   id: number,
+  //   name: string,
+  //   city: string,
+  //   category: string
+  // }[] = hotels;
 
   categories: Category[] = [
     { value: 'hotel', viewValue: 'Hotel' },

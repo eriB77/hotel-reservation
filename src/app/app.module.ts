@@ -12,10 +12,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/material.modul';
-import { MatTableModule } from '@angular/material/table';
+import { MatHeaderCellDef, MatTableModule } from '@angular/material/table';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { HotelListComponent } from './hotel-list/hotel-list.component';
     RestaurantComponent,
     PageNotFoundComponent,
     DashboardComponent,
-    HotelListComponent,
+    HotelListComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,8 @@ import { HotelListComponent } from './hotel-list/hotel-list.component';
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-    MatTableModule
+    MatTableModule, 
+    MatSortModule  
   ],
   providers: [],
   bootstrap: [AppComponent],
