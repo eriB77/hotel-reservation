@@ -12,8 +12,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/material.modul';
+import { MatTableModule } from '@angular/material/table';
 
 import { HttpClientModule } from '@angular/common/http';
+import { HotelListComponent } from './hotel-list/hotel-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     RestaurantComponent,
     PageNotFoundComponent,
     DashboardComponent,
+    HotelListComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],
