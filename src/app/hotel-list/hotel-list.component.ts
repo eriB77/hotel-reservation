@@ -15,7 +15,7 @@ import {
 
 import {AfterViewInit} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import {MatSort, Sort} from '@angular/material/sort';
 
 
 export interface hotels {
@@ -38,6 +38,10 @@ export class HotelListComponent implements OnInit {
   dataSource = HotelsJson.hotels;
   constructor() { 
     console.log(this.hotels);
+  }
+  @ViewChild('matSort') matSort = new MatSort();
+  ngAfterViewInit() {    
+   // this.dataSource.sort = this.matSort;
   }
 
   ngOnInit(): void {
