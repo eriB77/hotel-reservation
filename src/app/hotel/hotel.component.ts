@@ -1,16 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
-  FormArray,
   FormBuilder,
 } from '@angular/forms';
-import { AbstractControl, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import HotelsJson from 'src/app/db.json';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { HotelService } from '../services/hotel.service';
+import { Validators } from '@angular/forms';
 import { hotels } from '../hotel-list/hotel-list.component';
 
 
@@ -19,12 +13,12 @@ interface Category {
   viewValue: string;
 }
 
-// interface HOTELS {
-//   id: number;
-//   name: string;
-//   city: string;
-//   category: string;
-// }
+interface HOTELS {
+  id: number;
+  name: string;
+  city: string;
+  category: string;
+}
 
 @Component({
   selector: 'app-hotel',

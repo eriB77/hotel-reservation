@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatHeaderCellDef } from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 import { DataSource } from '@angular/cdk/table';
-import { MatSortModule } from '@angular/material/sort';
 import HotelsJson from 'src/app/db.json';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'; 
 import {
@@ -12,10 +12,6 @@ import {
   FormArray,
   FormBuilder,
 } from '@angular/forms';
-
-import {AfterViewInit} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort, Sort} from '@angular/material/sort';
 import { HotelService } from '../services/hotel.service';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
@@ -42,12 +38,17 @@ export class HotelListComponent implements OnInit {
     private hotelService: HotelService, 
     private location: Location, 
     private httpClient: HttpClient) {}
-  // @ViewChild(MatSort) sort : MatSort;
+  @ViewChild(MatSort)
+  sort!: MatSort;
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+
   // @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = ['name', 'city', 'category'];
   //dataSource = HotelsJson.hotels;
-  dataSource = HotelsJson.hotels;
+  dataSource = new MatTableDataSource(HotelsJson.hotels);
 
 
   ngOnInit(): void {
