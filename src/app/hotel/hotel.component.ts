@@ -17,12 +17,12 @@ interface Category {
   viewValue: string;
 }
 
-interface hotels {
-  id: number;
-  name: string;
-  city: string;
-  category: string;
-}
+// interface HOTELS {
+//   id: number;
+//   name: string;
+//   city: string;
+//   category: string;
+// }
 
 @Component({
   selector: 'app-hotel',
