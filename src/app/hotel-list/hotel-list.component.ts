@@ -39,10 +39,8 @@ export class HotelListComponent implements OnInit {
   constructor() { 
     console.log(this.hotels);
   }
-  @ViewChild('matSort') matSort = new MatSort();
-  ngAfterViewInit() {    
-   // this.dataSource.sort = this.matSort;
-  }
+  @ViewChild(MatSort) sort = MatSort;
+  
 
   ngOnInit(): void {
   }

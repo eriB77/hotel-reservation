@@ -1,22 +1,30 @@
 <mat-container>
-    <table mat-table [dataSource]="dataSource" matSort #matSort="matSort">
+    <!-- <mat-form-field appearance="standard">
+        <mat-label>Filter Hotels</mat-label>
+        <input matInput placeholder="" search (keyup)="applyFilter($event)" #input />
+    </mat-form-field> -->
+
+    <table mat-table [dataSource]="dataSource" matSort>
+
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header sortActionDescription="Sort by name">
-                name</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+                Name</th>
             <td mat-cell *matCellDef="let hotelRow">{{hotelRow.name}}</td>
         </ng-container>
+
         <ng-container matColumnDef="city">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by City">city</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by City">City</th>
             <td mat-cell *matCellDef="let hotelRow">{{hotelRow.city}}</td>
         </ng-container>
 
         <ng-container matColumnDef="category">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Category">category</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Category">Category</th>
             <td mat-cell *matCellDef="let hotelRow">{{hotelRow.category}}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let hotelRow; columns: displayedColumns;"></tr>
         <!-- <tr class="mat-row" *matNoDataRow>This filter does not match {{input.value}}</tr> -->
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
     </table>
 </mat-container>
