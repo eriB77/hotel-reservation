@@ -25,6 +25,9 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let hotelRow; columns: displayedColumns;"></tr>
         <!-- <tr class="mat-row" *matNoDataRow>This filter does not match {{input.value}}</tr> -->
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
+        <!-- <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" showFirstLastButtons></mat-paginator> -->
     </table>
+    <button mat-raised-button color="warn" type="button" class="delete" title="delete hotel">Delete</button>
+    <button mat-raised-button type="button" (click)="goBack()">GO back</button>
+    <button mat-raised-button type="button" class="add-button">Add hotel</button>
 </mat-container>

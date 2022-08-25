@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import HotelsJson from 'src/app/db.json';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { HotelService } from '../services/hotel.service';
+import { hotels } from '../hotel-list/hotel-list.component';
 
 
 interface Category {
@@ -52,8 +54,15 @@ export class HotelComponent implements OnInit {
   public category!: FormControl;
   namePattern = "^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z]).{4,30}$";
   cityPattern = "^[[a-zA-Z ]{4,30}$";
+  hotelService: any;
 
-  saveHotel(): void {
+  save(name: string): void {
+    name = name.trim();
+    if (!name) {return;}
+    this.hotelService.saveHotel({ name } as hotels)
+    .subscribe((hotel: any) => {
+      this.hotels.push(hotel);
+    });
     console.log(this.hotelsForm.value);
   };
   
