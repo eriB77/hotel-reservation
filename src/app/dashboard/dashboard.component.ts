@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReservationService } from '../service/reservation.service';
+import hotels from 'src/app/db.json';
 
 
 export interface hotels {
