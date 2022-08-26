@@ -8,6 +8,8 @@ import { Validators } from '@angular/forms';
 import { hotels } from '../hotel-list/hotel-list.component';
 import {MatDialog} from '@angular/material/dialog';
 import {Injectable} from '@angular/core';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { Observable } from 'rxjs';
 
 
 interface Category {
@@ -52,15 +54,15 @@ export class HotelComponent implements OnInit {
   cityPattern = "^[[a-zA-Z ]{4,30}$";
   hotelService: any;
 
-  save(name: string): void {
-    name = name.trim();
-    if (!name) {return;}
-    this.hotelService.saveHotel({ name } as hotels)
-    .subscribe((hotel: any) => {
-      this.hotels.push(hotel);
+  add(hotels: hotels): void {
+    hotels = hotels.trim();
+    if (!hotels) { return; }
+    this.hotelService.saveHotel({ hotels} as hotels)
+    .subscribe(hotels => {
+      this.hotels.push(hotels);
     });
-    console.log(this.hotelsForm.value);
-  };
+  }
+
   
   constructor(private fb: FormBuilder) { }
 
