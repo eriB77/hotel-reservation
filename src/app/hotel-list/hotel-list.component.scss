@@ -1,3 +1,30 @@
 table {
-    width: 100%;
+    width: 70%;
+    align-items: center;
+    margin-right:auto;
+    margin-left: auto;
+    margin-top: 3rem;
+    border: none;
+    font-family: 'Ubuntu', sans-serif !important;
+    border-radius: 1rem;
+}
+
+th{
+    background-color: #5d59db;
+    font-weight: 900;
+    font-size: 1.85rem;
+    color: white;
+    font-family: 'Ubuntu', sans-serif !important;
+}
+
+.mat-container{
+   display: flex;
+
+}
+button{
+    margin-top: 10px;
+    margin-left: 300px;
+}
+td{
+    font-size: 1.5rem;
 }

@@ -6,6 +6,8 @@ import {
 } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { hotels } from '../hotel-list/hotel-list.component';
+import {MatDialog} from '@angular/material/dialog';
+import {Injectable} from '@angular/core';
 
 
 interface Category {
@@ -33,7 +35,7 @@ export class HotelComponent implements OnInit {
   //   city: string,
   //   category: string
   // }[] = hotels;
-
+  
   categories: Category[] = [
     { value: 'hotel', viewValue: 'Hotel' },
     { value: 'apartman', viewValue: 'Apartman' },

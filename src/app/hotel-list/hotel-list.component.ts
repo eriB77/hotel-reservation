@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatHeaderCellDef } from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -15,6 +15,10 @@ import {
 import { HotelService } from '../services/hotel.service';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogRef } from '@angular/cdk/dialog';
+import { HotelComponent } from '../hotel/hotel.component';
+import {Injectable} from '@angular/core';
 
 
 export interface hotels {
@@ -30,6 +34,7 @@ export interface hotels {
   styleUrls: ['./hotel-list.component.scss']
 })
 export class HotelListComponent implements OnInit {
+  [x: string]: any;
 
   hotels: hotels[] = HotelsJson.hotels;
   
@@ -37,7 +42,8 @@ export class HotelListComponent implements OnInit {
   constructor(
     private hotelService: HotelService, 
     private location: Location, 
-    private httpClient: HttpClient) {}
+    private httpClient: HttpClient,
+    public dialog: MatDialog) {}
   @ViewChild(MatSort)
   sort!: MatSort;
   ngAfterViewInit() {
@@ -46,11 +52,18 @@ export class HotelListComponent implements OnInit {
 
   // @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  displayedColumns: string[] = ['name', 'city', 'category'];
+  displayedColumns: string[] = ['name', 'city', 'category', 'delete'];
   //dataSource = HotelsJson.hotels;
   dataSource = new MatTableDataSource(HotelsJson.hotels);
 
+  openDialog(){
+    const dialogRef = this.dialog.open(HotelComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  
   ngOnInit(): void {
     //this.getHotelList();
     // this.dataSource.paginator = this.paginator;
@@ -74,6 +87,13 @@ export class HotelListComponent implements OnInit {
     this.location.back();
   }
 
+
+  @ViewChild(MatTable)
+  table!: MatTable<any>;
+
+  delete(hotelrow:hotels) {
+    this.dataSource = new MatTableDataSource(this.dataSource.data.filter((hotelItem) => hotelItem.id !== hotelrow.id));
+  }
 
   // add(name:string): void {
   //   name = name.trim();
