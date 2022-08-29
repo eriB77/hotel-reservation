@@ -86,6 +86,17 @@ export class HotelService {
     );
   }
   
-  
+  getHotel404<Data>(id: number): Observable<hotels> {
+    const url = `${this.hotelsUrl}/?id=${id}`;
+    return this.http.get<hotels[]>(url)
+      .pipe(
+        map(hotels => hotels[0]), 
+        tap(h => {
+          const outcome = h ? 'fetched' : 'did not find';
+          this.log(`${outcome} hotels id=${id}`);
+        }),
+        catchError(this.handleError<hotels>(`getHotel id=${id}`))
+      );
+  }
 }
 
