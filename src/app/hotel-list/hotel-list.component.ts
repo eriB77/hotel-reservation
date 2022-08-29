@@ -4,7 +4,6 @@ import { MatHeaderCellDef } from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { DataSource } from '@angular/cdk/table';
-import HotelsJson from 'src/app/db.json';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'; 
 import {
   FormGroup,
@@ -19,10 +18,11 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { DialogRef } from '@angular/cdk/dialog';
 import { HotelComponent } from '../hotel/hotel.component';
 import {Injectable} from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 export interface hotels {
-  id: number;
+  id?: number;
   name: string;
   city: string;
   category: string;
@@ -34,11 +34,6 @@ export interface hotels {
   styleUrls: ['./hotel-list.component.scss']
 })
 export class HotelListComponent implements OnInit {
-  [x: string]: any;
-
-  hotels: hotels[] = HotelsJson.hotels;
-  
-  
   constructor(
     private hotelService: HotelService, 
     private location: Location, 
@@ -54,7 +49,7 @@ export class HotelListComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'city', 'category', 'delete'];
   //dataSource = HotelsJson.hotels;
-  dataSource = new MatTableDataSource(HotelsJson.hotels);
+  dataSource = new MatTableDataSource();
 
   openDialog(){
     const dialogRef = this.dialog.open(HotelComponent);
@@ -65,12 +60,9 @@ export class HotelListComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    //this.getHotelList();
-    // this.dataSource.paginator = this.paginator;
-    //   this.httpClient.get('http://localhost:3000/heros')
-    //     .subscribe((hotels: hotels[]) => {
-    //       this.dataSource.data = hotels;
-    //     });
+  this.hotelService.getHotelList().subscribe(
+    (hotels) => {this.dataSource.data = hotels}
+  );
     }
 
   getHotelList(): void{
@@ -92,7 +84,7 @@ export class HotelListComponent implements OnInit {
   table!: MatTable<any>;
 
   delete(hotelrow:hotels) {
-    this.dataSource = new MatTableDataSource(this.dataSource.data.filter((hotelItem) => hotelItem.id !== hotelrow.id));
+    // this.dataSource = new MatTableDataSource(this.dataSource.data.filter((hotelItem) => hotelItem.id !== hotelrow.id));
   }
 
   // add(name:string): void {

@@ -4,6 +4,7 @@ import { MessageService } from './message.service';
 import { catchError, Observable, map, tap, of} from 'rxjs';
 import HotelsJson from 'src/app/db.json';
 import { hotels } from '../hotel-list/hotel-list.component';
+import { BASE_URL } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class HotelService {
     this.messageService.add(`HotelService: ${message}`);
   }
 
-  private hotelsUrl = 'api/hotellist';
+  private hotelsUrl = `${BASE_URL}/hotels`;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -47,8 +48,8 @@ export class HotelService {
     );
   }
   
-  saveHotel(hotels: hotels): Observable<hotels>{
-    return this.http.post<hotels>(this.hotelsUrl, hotels, this.httpOptions).pipe(
+  saveHotel(hotel: hotels): Observable<hotels>{
+    return this.http.post<hotels>(this.hotelsUrl, hotel, this.httpOptions).pipe(
       tap((newhotel:hotels) =>this.log(`added hotels w/ id=${newhotel.id}`)),
       catchError(this.handleError<hotels>('addHotel'))
     );

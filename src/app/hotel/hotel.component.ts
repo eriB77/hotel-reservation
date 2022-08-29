@@ -10,6 +10,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {Injectable} from '@angular/core';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { Observable } from 'rxjs';
+import { HotelService } from '../services/hotel.service';
 
 
 interface Category {
@@ -18,7 +19,7 @@ interface Category {
 }
 
 interface HOTELS {
-  id: number;
+  id?: number;
   name: string;
   city: string;
   category: string;
@@ -52,7 +53,25 @@ export class HotelComponent implements OnInit {
   public category!: FormControl;
   namePattern = "^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z]).{4,30}$";
   cityPattern = "^[[a-zA-Z ]{4,30}$";
-  hotelService: any;
+ 
+  constructor(private hotelService: HotelService) { 
+    this.hotelsForm = new FormGroup({
+      name : new FormControl('',  [Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(30),
+      Validators.pattern(this.namePattern)]),
+      city : new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(30),
+        Validators.pattern(this.cityPattern),
+      ]),
+      category : new FormControl('',
+      Validators.required),
+
+    })
+  }
 
   // add(hotels: hotels): void {
   //   hotels = hotels.trim();
@@ -62,42 +81,18 @@ export class HotelComponent implements OnInit {
   //     this.hotels.push(hotels);
   //   });
   // }
+  saveHotel(){
+    /* this.hotelService.saveHotel(this.hotelsForm.value).subscribe((hotelItem: any) => {
+      this.hotels = hotelItem; */
+      console.log(this.hotelsForm.value);
+      this.hotelService.saveHotel(this.hotelsForm.value).subscribe((hotel:hotels) => {console.log(hotel)})
+   
+  }
 
-  
-  constructor(private fb: FormBuilder) { }
 
 
 
   ngOnInit(): void {
-    this.reactiveForm();
   }
-  reactiveForm(){
-    this.hotelsForm = this.fb.group(
-      {
-        
-        name: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(5),
-            Validators.maxLength(30),
-            Validators.pattern(this.namePattern),
-          ]
-        ],
-        city: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(5),
-            Validators.maxLength(30),
-            Validators.pattern(this.cityPattern),
-          ]
-        ],
-        category: [
-          '',
-          Validators.required,
-        ]
-      }
-    );
-  }
+  
 };
