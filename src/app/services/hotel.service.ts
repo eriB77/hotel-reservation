@@ -84,5 +84,7 @@ export class HotelService {
       catchError(this.handleError<hotels>('deleteHotel'))
     );
   }
+  
+  
 }
 

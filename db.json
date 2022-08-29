@@ -35,6 +35,30 @@
       "city": "gvngf",
       "category": "hotel",
       "id": 6
+    },
+    {
+      "name": "ASgrghr",
+      "city": "Miskolc",
+      "category": "hotel",
+      "id": 7
+    },
+    {
+      "name": "Alma d7",
+      "city": "NAgyar",
+      "category": "apartman",
+      "id": 8
+    },
+    {
+      "name": "Utako",
+      "city": "Jamaica",
+      "category": "guesthouse",
+      "id": 9
+    },
+    {
+      "name": "Ez egy teszt",
+      "city": "Budapest",
+      "category": "guesthouse",
+      "id": 10
     }
   ],
   "meals": [

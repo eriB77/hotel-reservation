@@ -6,7 +6,7 @@ import {
 } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { hotels } from '../hotel-list/hotel-list.component';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Injectable} from '@angular/core';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { Observable } from 'rxjs';
@@ -54,7 +54,9 @@ export class HotelComponent implements OnInit {
   namePattern = "^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z]).{4,30}$";
   cityPattern = "^[[a-zA-Z ]{4,30}$";
  
-  constructor(private hotelService: HotelService) { 
+  constructor(
+    private hotelService: HotelService, 
+    private dialogRef: MatDialogRef<HotelComponent>) { 
     this.hotelsForm = new FormGroup({
       name : new FormControl('',  [Validators.required,
       Validators.minLength(5),
@@ -73,23 +75,14 @@ export class HotelComponent implements OnInit {
     })
   }
 
-  // add(hotels: hotels): void {
-  //   hotels = hotels.trim();
-  //   if (!hotels) { return; }
-  //   this.hotelService.saveHotel({ hotels} as hotels)
-  //   .subscribe(hotels => {
-  //     this.hotels.push(hotels);
-  //   });
-  // }
   saveHotel(){
-    /* this.hotelService.saveHotel(this.hotelsForm.value).subscribe((hotelItem: any) => {
-      this.hotels = hotelItem; */
-      console.log(this.hotelsForm.value);
       this.hotelService.saveHotel(this.hotelsForm.value).subscribe((hotel:hotels) => {console.log(hotel)})
-   
+      this.dialogRef.close(this.hotelsForm.value);
   }
 
-
+  close(){
+    this.dialogRef.close();
+  }
 
 
   ngOnInit(): void {
