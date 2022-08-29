@@ -9,7 +9,7 @@ import { hotels } from '../hotel-list/hotel-list.component';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Injectable} from '@angular/core';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
-import { Observable } from 'rxjs';
+import { observable, Observable } from 'rxjs';
 import { HotelService } from '../services/hotel.service';
 
 
@@ -77,13 +77,12 @@ export class HotelComponent implements OnInit {
 
   saveHotel(){
       this.hotelService.saveHotel(this.hotelsForm.value).subscribe((hotel:hotels) => {console.log(hotel)})
-      this.dialogRef.close(this.hotelsForm.value);
+      this.dialogRef.close();
   }
 
   close(){
     this.dialogRef.close();
   }
-
 
   ngOnInit(): void {
   }

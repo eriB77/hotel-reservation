@@ -59,6 +59,66 @@
       "city": "Budapest",
       "category": "guesthouse",
       "id": 10
+    },
+    {
+      "name": "Ez uj teszt",
+      "city": "Budapest",
+      "category": "apartman",
+      "id": 11
+    },
+    {
+      "name": "Na most",
+      "city": "Turan",
+      "category": "apartman",
+      "id": 12
+    },
+    {
+      "name": "Talán",
+      "city": "Rajka",
+      "category": "hotel",
+      "id": 13
+    },
+    {
+      "name": "Amerika",
+      "city": "Texas",
+      "category": "apartman",
+      "id": 14
+    },
+    {
+      "name": "Az a szép ",
+      "city": "Lakas",
+      "category": "hotel",
+      "id": 15
+    },
+    {
+      "name": "Ez az utaolsó",
+      "city": "Tasad",
+      "category": "apartman",
+      "id": 16
+    },
+    {
+      "name": "Fbwujqpifru",
+      "city": "vngredpjwia",
+      "category": "apartman",
+      "id": 17
+    },
+    {
+      "name": "Sioőwháe",
+      "city": "fesbrfhge",
+      "category": "hotel",
+      "id": 18
+    },
+    {
+      "name": "Eergz3qhzu564",
+      "city": "drghae wgh",
+      "category": "apartman",
+      "id": 19
+    },
+    {
+      "name": "QqEGR3EWGH",
+      "city": "tgrhtzr",
+      "category": "hotel",
+      "id": 20
     }
   ],
   "meals": [

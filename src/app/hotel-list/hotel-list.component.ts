@@ -55,6 +55,7 @@ export class HotelListComponent implements OnInit {
     const dialogRef = this.dialog.open(HotelComponent);
 
     dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
       console.log(`Dialog result: ${result}`);
     });
     
