@@ -54,14 +54,14 @@ export class HotelComponent implements OnInit {
   cityPattern = "^[[a-zA-Z ]{4,30}$";
   hotelService: any;
 
-  add(hotels: hotels): void {
-    hotels = hotels.trim();
-    if (!hotels) { return; }
-    this.hotelService.saveHotel({ hotels} as hotels)
-    .subscribe(hotels => {
-      this.hotels.push(hotels);
-    });
-  }
+  // add(hotels: hotels): void {
+  //   hotels = hotels.trim();
+  //   if (!hotels) { return; }
+  //   this.hotelService.saveHotel({ hotels} as hotels)
+  //   .subscribe(hotels => {
+  //     this.hotels.push(hotels);
+  //   });
+  // }
 
   
   constructor(private fb: FormBuilder) { }
