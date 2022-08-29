@@ -34,11 +34,14 @@ export interface hotels {
   styleUrls: ['./hotel-list.component.scss']
 })
 export class HotelListComponent implements OnInit {
+  hotelRow: any;
   constructor(
     private hotelService: HotelService, 
     private location: Location, 
     private httpClient: HttpClient,
     public dialog: MatDialog) {}
+
+
   @ViewChild(MatSort)
   sort!: MatSort;
   ngAfterViewInit() {
@@ -48,7 +51,6 @@ export class HotelListComponent implements OnInit {
   // @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = ['name', 'city', 'category', 'delete'];
-  //dataSource = HotelsJson.hotels;
   dataSource = new MatTableDataSource();
 
   openDialog(){
@@ -85,22 +87,14 @@ export class HotelListComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
 
-  delete(hotelrow:hotels) {
-    // this.dataSource = new MatTableDataSource(this.dataSource.data.filter((hotelItem) => hotelItem.id !== hotelrow.id));
+  delete(hotel: hotels): void{
+    this.dataSource.data = this.dataSource.data.filter(h => h !==hotel);
+    this.hotelService.deleteHotel(this.hotelRow.id).subscribe();
+    // this.hotelService.deleteHotel(this.hotelRow).subscribe(data => {
+    //   this.getHotelList();
+    // })
+
   }
-
-  // add(name:string): void {
-  //   name = name.trim();
-  //   if (!name) { return; }
-  //   this.hotelService.addHotels({ name} as hotels)
-  //   .subscribe(hotels => {
-  //     this.hotels.push(hotels);
-  //   });
-  // }
-
-  // delete(hotels: hotels): void {
-  //   this.hotels = this.hotels.filter(h =>h !==hotels);
-  //   this.hotelService.deleteHero(hotels.id).subscribe();
-  // }
+  
 
 }

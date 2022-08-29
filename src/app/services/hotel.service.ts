@@ -10,6 +10,7 @@ import { BASE_URL } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class HotelService {
+  hotelRow: any;
   
 
   private handleError<T>(operation = 'operation', result?: T) {
