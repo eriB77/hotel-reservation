@@ -19,6 +19,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { HotelComponent } from '../hotel/hotel.component';
 import {Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 export interface hotels {
@@ -27,6 +28,7 @@ export interface hotels {
   city: string;
   category: string;
 }
+
 
 @Component({
   selector: 'app-hotel-list',
@@ -46,9 +48,14 @@ export class HotelListComponent implements OnInit {
   sort!: MatSort;
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  @ViewChild(MatTable)
+  table!: MatTable<any>;
 
   displayedColumns: string[] = ['name', 'city', 'category', 'delete'];
   dataSource = new MatTableDataSource();
@@ -78,12 +85,8 @@ export class HotelListComponent implements OnInit {
   }
 
 
-  @ViewChild(MatTable)
-  table!: MatTable<any>;
-
   delete(id: number): void{
     this.hotelService.deleteHotel(id).subscribe(() => { this.getHotelList()});
   }
-  
 
 }
