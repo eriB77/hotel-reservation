@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
 
 
 @Component({

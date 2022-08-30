@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MenuRestaurantComponent } from './restaurant/menu-restaurant/menu-restaurant.component';
+import { OrderRestaurantComponent } from './restaurant/order-restaurant/order-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     RestaurantComponent,
     PageNotFoundComponent,
     DashboardComponent,
-    HotelListComponent
+    HotelListComponent,
+    MenuRestaurantComponent,
+    OrderRestaurantComponent
   ],
   imports: [
     BrowserModule,

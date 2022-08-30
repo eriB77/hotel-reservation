@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { catchError, Observable, map, tap, of} from 'rxjs';
-import HotelsJson from 'src/app/db.json';
 import { hotels } from '../hotel-list/hotel-list.component';
 import { BASE_URL } from 'src/environments/environment';
 
