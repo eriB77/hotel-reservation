@@ -57,28 +57,22 @@ export class HotelListComponent implements OnInit {
     const dialogRef = this.dialog.open(HotelComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      this.ngOnInit();
+      this.getHotelList()
       console.log(`Dialog result: ${result}`);
     });
     
   }
   
   ngOnInit(): void {
-  this.hotelService.getHotelList().subscribe(
-    (hotels) => {this.dataSource.data = hotels}
-  );
+    this.getHotelList()
     }
 
   getHotelList(): void{
-    // this.hotelService.getHotelList()
-    // .subscribe(hotels => this.hotels = hotels);
+    this.hotelService.getHotelList().subscribe(
+      (hotels) => {this.dataSource.data = hotels}
+    );
   }
-  // save(): void{
-  //   if (this.hotels){
-  //     this.hotelService.updateHotel(this.hotels)
-  //     .subscribe(() => this.goBack());
-  //   }
-  // }
+
   goBack(): void {
     this.location.back();
   }
@@ -87,13 +81,8 @@ export class HotelListComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
 
-  delete(hotel: hotels): void{
-    this.dataSource.data = this.dataSource.data.filter(h => h !==hotel);
-    this.hotelService.deleteHotel(this.hotelRow.id).subscribe();
-    // this.hotelService.deleteHotel(this.hotelRow).subscribe(data => {
-    //   this.getHotelList();
-    // })
-
+  delete(id: number): void{
+    this.hotelService.deleteHotel(id).subscribe(() => { this.getHotelList()});
   }
   
 

@@ -29,7 +29,7 @@
         <ng-container matColumnDef="delete">
             <th mat-header-cell *matHeaderCellDef> </th>
             <td mat-cell *matCellDef="let hotelRow">
-                <button mat-raised-button type="button" (click)="delete(hotelRow)"><mat-icon>delete</mat-icon></button>
+                <button mat-raised-button type="button" (click)="delete(hotelRow.id)"><mat-icon>delete</mat-icon></button>
             </td>
         </ng-container>
     </table>

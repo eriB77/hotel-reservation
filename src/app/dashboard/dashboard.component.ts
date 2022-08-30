@@ -16,11 +16,8 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.getHotelList();
+
   }
-  getHotelList(): void{
-    // this.hotelService.getHotelList()
-    // .subscribe(hotels => this.hotels = hotels.slice(1,5));
-  }
+
   
 }

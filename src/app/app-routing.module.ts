@@ -5,7 +5,6 @@ import { HotelComponent } from './hotel/hotel.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 
 const routes: Routes = [
-   {path: 'hotel', component: HotelComponent},
    {path: 'restaurant', component: RestaurantComponent},
    {path: 'hotellist', component: HotelListComponent},   
    {path: '', redirectTo: '/dasboard', pathMatch: 'full'},

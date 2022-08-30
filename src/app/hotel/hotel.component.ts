@@ -6,11 +6,12 @@ import {
 } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { hotels } from '../hotel-list/hotel-list.component';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+
 import {Injectable} from '@angular/core';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { observable, Observable } from 'rxjs';
 import { HotelService } from '../services/hotel.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 interface Category {
@@ -56,7 +57,9 @@ export class HotelComponent implements OnInit {
  
   constructor(
     private hotelService: HotelService, 
-    private dialogRef: MatDialogRef<HotelComponent>) { 
+     public dialogRef: MatDialogRef<HotelComponent>
+    ) 
+    { 
     this.hotelsForm = new FormGroup({
       name : new FormControl('',  [Validators.required,
       Validators.minLength(5),
@@ -81,7 +84,7 @@ export class HotelComponent implements OnInit {
   }
 
   close(){
-    this.dialogRef.close();
+     this.dialogRef.close();
   }
 
   ngOnInit(): void {
