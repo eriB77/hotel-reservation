@@ -1,19 +1,139 @@
 {
-  "posts": [
+  "hotels": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Hotel Benczur",
+      "city": "Budapest",
+      "category": "Hotel"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "Star Apartmans",
+      "city": "Madrid",
+      "category": "Apartman"
+    },
+    {
+      "id": 3,
+      "name": "Hotel Ritz",
+      "city": "Paris",
+      "category": "Hotel"
+    },
+    {
+      "id": 4,
+      "name": "Dream Tourist",
+      "city": "London",
+      "category": "GuestHouse"
+    },
+    {
+      "id": 5,
+      "name": "Four Seasons",
+      "city": "Praha",
+      "category": "Hotel"
+    },
+    {
+      "name": "Agreghr",
+      "city": "gvngf",
+      "category": "hotel",
+      "id": 6
+    },
+    {
+      "name": "ASgrghr",
+      "city": "Miskolc",
+      "category": "hotel",
+      "id": 7
+    },
+    {
+      "name": "Alma d7",
+      "city": "NAgyar",
+      "category": "apartman",
+      "id": 8
+    },
+    {
+      "name": "Utako",
+      "city": "Jamaica",
+      "category": "guesthouse",
+      "id": 9
+    },
+    {
+      "name": "Ez egy teszt",
+      "city": "Budapest",
+      "category": "guesthouse",
+      "id": 10
+    },
+    {
+      "name": "Ez uj teszt",
+      "city": "Budapest",
+      "category": "apartman",
+      "id": 11
+    },
+    {
+      "name": "Na most",
+      "city": "Turan",
+      "category": "apartman",
+      "id": 12
+    },
+    {
+      "name": "Talán",
+      "city": "Rajka",
+      "category": "hotel",
+      "id": 13
+    },
+    {
+      "name": "Amerika",
+      "city": "Texas",
+      "category": "apartman",
+      "id": 14
+    },
+    {
+      "name": "Az a szép ",
+      "city": "Lakas",
+      "category": "hotel",
+      "id": 15
+    },
+    {
+      "name": "Ez az utaolsó",
+      "city": "Tasad",
+      "category": "apartman",
+      "id": 16
+    },
+    {
+      "name": "Fbwujqpifru",
+      "city": "vngredpjwia",
+      "category": "apartman",
+      "id": 17
+    },
+    {
+      "name": "Ez új hotel9",
+      "city": "Budapest",
+      "category": "hotel",
+      "id": 18
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "meals": [
+    {
+      "productName": "Pizza Margharita",
+      "price": 1950,
+      "imgUrl": "https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "productName": "Pasta Prosciutto",
+      "price": 2100,
+      "imgUrl": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1403&q=80"
+    },
+    {
+      "productName": "Pizza Salame",
+      "price": 2200,
+      "imgUrl": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80"
+    },
+    {
+      "productName": "Pasta Pomodoro",
+      "price": 1850,
+      "imgUrl": "https://images.unsplash.com/photo-1498579150354-977475b7ea0b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "productName": "Pasta Bolognese",
+      "price": 2250,
+      "imgUrl": "https://images.unsplash.com/photo-1598866594230-a7c12756260f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1211&q=80"
+    }
+  ]
 }

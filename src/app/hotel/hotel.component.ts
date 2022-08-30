@@ -1,15 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
-  FormArray,
   FormBuilder,
 } from '@angular/forms';
-import { AbstractControl, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import hotels from 'src/db.json';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { Validators } from '@angular/forms';
+import { hotels } from '../hotel-list/hotel-list.component';
+
+import {Injectable} from '@angular/core';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { observable, Observable } from 'rxjs';
+import { HotelService } from '../services/hotel.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 interface Category {
@@ -17,8 +19,8 @@ interface Category {
   viewValue: string;
 }
 
-interface hotels {
-  id: number;
+interface HOTELS {
+  id?: number;
   name: string;
   city: string;
   category: string;
@@ -31,13 +33,13 @@ interface hotels {
 })
 export class HotelComponent implements OnInit {
 
-  public hotelsList: {
-    id: number,
-    name: string,
-    city: string,
-    category: string
-  }[] = hotels;
-
+  // public hotelsList: {
+  //   id: number,
+  //   name: string,
+  //   city: string,
+  //   category: string
+  // }[] = hotels;
+  
   categories: Category[] = [
     { value: 'hotel', viewValue: 'Hotel' },
     { value: 'apartman', viewValue: 'Apartman' },
@@ -52,45 +54,40 @@ export class HotelComponent implements OnInit {
   public category!: FormControl;
   namePattern = "^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z]).{4,30}$";
   cityPattern = "^[[a-zA-Z ]{4,30}$";
+ 
+  constructor(
+    private hotelService: HotelService, 
+     public dialogRef: MatDialogRef<HotelComponent>
+    ) 
+    { 
+    this.hotelsForm = new FormGroup({
+      name : new FormControl('',  [Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(30),
+      Validators.pattern(this.namePattern)]),
+      city : new FormControl('',
+      [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(30),
+        Validators.pattern(this.cityPattern),
+      ]),
+      category : new FormControl('',
+      Validators.required),
 
-  saveHotel(): void {
-    console.log(this.hotelsForm.value);
-  };
-  
-  constructor(private fb: FormBuilder) { }
+    })
+  }
 
+  saveHotel(){
+      this.hotelService.saveHotel(this.hotelsForm.value).subscribe((hotel:hotels) => {console.log(hotel)})
+      this.dialogRef.close();
+  }
 
+  close(){
+     this.dialogRef.close();
+  }
 
   ngOnInit(): void {
-    this.reactiveForm();
   }
-  reactiveForm(){
-    this.hotelsForm = this.fb.group(
-      {
-        
-        name: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(5),
-            Validators.maxLength(30),
-            Validators.pattern(this.namePattern),
-          ]
-        ],
-        city: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(5),
-            Validators.maxLength(30),
-            Validators.pattern(this.cityPattern),
-          ]
-        ],
-        category: [
-          '',
-          Validators.required,
-        ]
-      }
-    );
-  }
+  
 };
